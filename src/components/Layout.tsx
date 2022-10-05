@@ -1,8 +1,12 @@
 import { Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useGetJokesQuery } from "../api/api";
 import { jokeCategoryLinks } from "../constants/constants";
+import { useAppDispatch } from "../hooks/hooks";
+import { updateLoading } from "../store/jokesSlice";
 import CategoryLink from "./CategoryLink";
 import Hero from "./Hero";
+import JokeCategoryCard from "./JokeCategoryCard";
 import Navbar from "./Navbar";
 
 const LinkContainer = styled.div`
@@ -32,6 +36,12 @@ const Line = styled.hr`
 `;
 
 function Layout() {
+  const { isLoading } = useGetJokesQuery();
+  const dispatch = useAppDispatch();
+
+  if (isLoading) dispatch(updateLoading(isLoading));
+  if (!isLoading) dispatch(updateLoading(isLoading));
+
   const { category } = useParams();
 
   const foundCategory = jokeCategoryLinks.find(
@@ -65,6 +75,7 @@ function Layout() {
           {foundCategory.name}
         </CategoryHeader>
       )}
+      <JokeCategoryCard />
       <Outlet />
     </div>
   );

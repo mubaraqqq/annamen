@@ -1,9 +1,10 @@
 import { IJoke } from "./../types/joke-types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { updateJokesInStore } from "../store/jokesSlice";
 
 export type JokesResponse = {
   total: number;
-  results: IJoke[];
+  result: IJoke[];
 };
 
 // https://cors-anywhere.herokuapp.com/
@@ -24,6 +25,14 @@ export const jokesApi = createApi({
             "Origin, X-Requested-With, Content-Type, Accept",
         },
       }),
+      async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(updateJokesInStore(data));
+        } catch (e) {
+          console.log(e);
+        }
+      },
     }),
   }),
 });

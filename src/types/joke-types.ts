@@ -1,4 +1,4 @@
-export type IJoke = {
+export interface IJoke {
   icon_url: string;
   id: string;
   url: string;
@@ -6,7 +6,7 @@ export type IJoke = {
   categories: IJokeCategory[];
   created_at: string;
   updated_at: string;
-};
+}
 
 export type IJokeCategory =
   | "uncategorized"

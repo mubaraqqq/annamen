@@ -1,18 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useGetJokesQuery } from "../api/api";
-import { jokeCategoryLinks } from "../constants/constants";
+import { useAppSelector } from "../hooks/hooks";
+import { IJokeCategory } from "../types/joke-types";
+import { filterJokesByCategory } from "../utils/utils";
 
 const JokesCategory = () => {
-  const { data, isLoading } = useGetJokesQuery();
+  const jokes = useAppSelector((state) => state.jokes.jokes);
+  const isLoading = useAppSelector((state) => state.jokes.isLoading);
+
   const { category } = useParams();
 
-  const foundCategory = jokeCategoryLinks.find(
-    (joke) => joke.name === category
-  );
+  const jokesCategory = filterJokesByCategory(jokes, category as IJokeCategory);
 
-  console.log(data);
+  console.log(jokesCategory);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return <div style={{ width: "89%", margin: "0 auto" }}>Loading...</div>;
 
   return <div>JokesCategory</div>;
 };
