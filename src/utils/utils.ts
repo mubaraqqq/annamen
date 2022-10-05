@@ -7,7 +7,8 @@ export function filterJokesByCategory(
 ): IJokesStore[] {
   let jokesArray: IJokesStore[] = [];
   if (category === "uncategorized") {
-    jokesArray = data.filter((joke) => joke.categories.length === 0);
+    jokesArray = data.filter((joke) => joke.categories.length < 1);
+    return jokesArray;
   }
 
   jokesArray = data.filter((joke) => joke.categories.includes(category));
