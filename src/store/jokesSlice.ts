@@ -27,7 +27,7 @@ export const jokesSlice = createSlice({
   initialState,
   reducers: {
     updateJokesInStore: (state, action: PayloadAction<JokesResponse>) => {
-      const { payload } = action;
+      // const { payload } = action;
       // if (payload.results) {
       // let jokesArr = payload.results;
       // //   console.log(payload.results);

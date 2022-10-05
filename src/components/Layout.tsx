@@ -2,11 +2,8 @@ import { Outlet, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useGetJokesQuery } from "../api/api";
 import { jokeCategoryLinks } from "../constants/constants";
-import { useAppDispatch } from "../hooks/hooks";
-import { updateLoading } from "../store/jokesSlice";
 import CategoryLink from "./CategoryLink";
 import Hero from "./Hero";
-import JokeCategoryCard from "./JokeCategoryCard";
 import Navbar from "./Navbar";
 
 const LinkContainer = styled.div`
@@ -19,14 +16,14 @@ const LinkContainer = styled.div`
 `;
 
 const CategoryHeader = styled.h3`
-  padding: 2px;
+  padding: 3px;
   border-radius: 7px;
   font-family: "Montserrat";
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  width: 100px;
+  max-width: 200px;
   margin-left: 5%;
 `;
 
@@ -36,11 +33,7 @@ const Line = styled.hr`
 `;
 
 function Layout() {
-  const { isLoading } = useGetJokesQuery();
-  const dispatch = useAppDispatch();
-
-  if (isLoading) dispatch(updateLoading(isLoading));
-  if (!isLoading) dispatch(updateLoading(isLoading));
+  useGetJokesQuery();
 
   const { category } = useParams();
 
@@ -75,7 +68,6 @@ function Layout() {
           {foundCategory.name}
         </CategoryHeader>
       )}
-      <JokeCategoryCard />
       <Outlet />
     </div>
   );

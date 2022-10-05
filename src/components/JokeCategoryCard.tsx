@@ -4,13 +4,15 @@ import flash from "../assets/green-light-copy@3x.png";
 import arrow from "../assets/path-copy-5@3x.png";
 
 const Box = styled.div`
-  width: 350px;
+  width: 320px;
   min-height: 200px;
   max-height: 300px;
   padding: 1em;
   border: 1px solid grey;
   border-radius: 5px;
   position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
 
   div {
     display: flex;
@@ -33,6 +35,8 @@ const Box = styled.div`
 const JokeText = styled.p`
   margin-top: 10px;
   font-size: 14px;
+  overflow-y: scroll;
+  height: 80%;
 `;
 
 const StyledLink = styled(Link)`
@@ -52,19 +56,20 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const JokeCategoryCard = () => {
+type Props = {
+  joke: string;
+  number: number;
+  id: string;
+};
+
+const JokeCategoryCard = ({ joke, number, id }: Props) => {
   return (
     <Box>
       <div>
         <img src={flash} alt="lightning icon" width="20px" height="20px" />
-        <p>Teacher Jokes</p>
+        <p>Chuck Joke {number}</p>
       </div>
-      <JokeText>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae,
-        obcaecati non modi rem illo molestias ipsa reiciendis, dignissimos
-        inventore voluptatem repellendus necessitatibus eveniet fugit ad!
-        Explicabo suscipit eum repellat similique.
-      </JokeText>
+      <JokeText>{joke}</JokeText>
       <StyledLink to="">
         See more
         <img src={arrow} alt="arrow icon" width="30px" height="15px" />

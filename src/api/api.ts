@@ -1,6 +1,6 @@
 import { IJoke } from "./../types/joke-types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { updateJokesInStore } from "../store/jokesSlice";
+import { updateJokesInStore, updateLoading } from "../store/jokesSlice";
 
 export type JokesResponse = {
   total: number;
@@ -26,9 +26,11 @@ export const jokesApi = createApi({
         },
       }),
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+        dispatch(updateLoading(true));
         try {
           const { data } = await queryFulfilled;
           dispatch(updateJokesInStore(data));
+          dispatch(updateLoading(false));
         } catch (e) {
           console.log(e);
         }
