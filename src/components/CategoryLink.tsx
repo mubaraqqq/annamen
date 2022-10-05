@@ -26,12 +26,16 @@ type LinkProps = {
   bg: string;
   text: string;
   to: IJokeCategory;
+  header?: boolean;
 };
 
-const CategoryLink = ({ color, bg, text, to }: LinkProps) => {
+const CategoryLink = ({ color, bg, text, to, header }: LinkProps) => {
   return (
     <StyledLink
-      style={{ color: color, backgroundColor: bg }}
+      style={{
+        color: color,
+        backgroundColor: bg,
+      }}
       to={`/jokes/${to}`}
     >
       {text}
