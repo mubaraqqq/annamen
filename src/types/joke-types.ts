@@ -9,7 +9,7 @@ export type IJoke = {
 };
 
 export type IJokeCategory =
-  | " "
+  | "uncategorized"
   | "animal"
   | "career"
   | "celebrity"

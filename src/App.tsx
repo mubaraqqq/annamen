@@ -1,17 +1,21 @@
-import { useGetJokesQuery } from "./api/api";
+import { Route, Routes } from "react-router-dom";
+// import { useGetJokesQuery } from "./api/api";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import JokesCategory from "./components/JokesCategory";
+import Layout from "./components/Layout";
 
 function App() {
-  const { data, isLoading } = useGetJokesQuery();
+  // const { data, isLoading } = useGetJokesQuery();
 
-  console.log(data);
-
-  if (isLoading) return <div>Loading...</div>;
+  // console.log(data);
 
   return (
     <div>
-      <Navbar />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="jokes/:category" element={<JokesCategory />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

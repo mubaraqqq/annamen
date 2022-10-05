@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Nav = styled.nav`
   height: 60px;
-  background-color: #5e5e5e;
+  background-color: #303030;
   position: relative;
   /* padding: 10px; */
 
@@ -24,9 +24,10 @@ const Nav = styled.nav`
     font-size: 15px;
     height: 100%;
     margin-right: 64px;
+    padding: 0 20px;
     letter-spacing: normal;
     font-stretch: wider;
-    width: 170px;
+    /* width: 170px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,7 @@ const Nav = styled.nav`
     margin-right: 100px;
     background-color: #cfb995;
     justify-content: space-evenly;
+    width: 200px;
   }
 `;
 
@@ -45,7 +47,24 @@ const Menu = styled.ul`
   padding: 5px;
   border-radius: 5px;
   position: absolute;
-  right: 80px;
+  right: 105px;
+  top: 110%;
+  transform: translateY(10);
+  transition: all 0.1s ease-out;
+  animation-duration: 0.7s;
+  animation-name: animate-fade;
+  animation-fill-mode: backwards;
+
+  @keyframes animate-fade {
+    0% {
+      opacity: 0;
+      transform: translateY(-10);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   li {
     padding: 5px;
     font-size: 14px;
@@ -85,7 +104,7 @@ const Navbar = () => {
               alt="bottom caret"
               width="12px"
               height="12px"
-              style={{ marginLeft: "15px" }}
+              style={{ marginLeft: "10px" }}
             />
           </li>
         </ul>

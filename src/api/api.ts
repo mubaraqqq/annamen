@@ -6,11 +6,14 @@ export type JokesResponse = {
   results: IJoke[];
 };
 
+// https://cors-anywhere.herokuapp.com/
+
 // Define a service using a base URL and expected endpoints
 export const jokesApi = createApi({
   reducerPath: "jokesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://cors-anywhere.herokuapp.com/http://api.chucknorris.io/",
+    baseUrl: "https://api.chucknorris.io/",
+    mode: "cors",
   }),
   endpoints: (builder) => ({
     getJokes: builder.query<JokesResponse, void>({
