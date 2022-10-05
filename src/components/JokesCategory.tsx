@@ -1,7 +1,7 @@
 import { useGetJokesQuery } from "../api/api";
 
 const JokesCategory = () => {
-  const { data, isLoading } = useGetJokesQuery();
+  const { data } = useGetJokesQuery();
 
   console.log(data);
 
