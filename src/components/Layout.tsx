@@ -5,6 +5,7 @@ import { jokeCategoryLinks } from "../constants/constants";
 import CategoryLink from "./CategoryLink";
 import Hero from "./Hero";
 import Navbar from "./Navbar";
+import footerImg from "../assets/bitmap_2.png";
 
 const LinkContainer = styled.div`
   padding: 40px 0;
@@ -30,6 +31,12 @@ const CategoryHeader = styled.h3`
 const Line = styled.hr`
   width: 89%;
   margin: 0 auto;
+`;
+
+const Footer = styled.div`
+  width: 100%;
+  height: 200px;
+  background-image: url(${footerImg});
 `;
 
 function Layout() {
@@ -69,6 +76,8 @@ function Layout() {
         </CategoryHeader>
       )}
       <Outlet />
+
+      <Footer />
     </div>
   );
 }

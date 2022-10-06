@@ -29,7 +29,7 @@ type Props = {
 };
 
 const LoadMoreButton = ({ click, length }: Props) => {
-  if (length === 0) return <p>No more items left</p>;
+  if (length <= 0) return <p>No more items left</p>;
 
   return (
     <Button onClick={click}>

@@ -26,7 +26,7 @@ const JokesCategory = () => {
   const jokesCategory = filterJokesByCategory(jokes, category as IJokeCategory);
 
   function increaseLimit() {
-    setLimit((limit) => (limit += 3));
+    setLimit((limit) => (limit += 1));
   }
 
   if (isLoading)
@@ -54,7 +54,11 @@ const JokesCategory = () => {
         ))}
       </Box>
       <div style={{ textAlign: "center", padding: "30px 0" }}>
-        <LoadMoreButton length={lengthLeft} click={increaseLimit} />
+        <LoadMoreButton
+          key={category}
+          length={lengthLeft}
+          click={increaseLimit}
+        />
       </div>
     </div>
   );
