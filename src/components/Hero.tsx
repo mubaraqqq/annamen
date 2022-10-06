@@ -24,6 +24,10 @@ const Heading = styled.h1`
   font-size: 48px;
   line-height: 72px;
   color: #cfb995;
+
+  @media (max-width: 600px) {
+    font-size: 35px;
+  }
 `;
 
 const SubHeading = styled.h2`
@@ -31,6 +35,10 @@ const SubHeading = styled.h2`
   font-size: 20px;
   /* line-height: 72px; */
   color: #ffffff;
+
+  @media (max-width: 600px) {
+    font-size: 15px;
+  }
 `;
 
 const InputBox = styled.div`
@@ -72,6 +80,15 @@ const InputBox = styled.div`
 
   img:nth-child(2) {
     display: none;
+  }
+
+  @media (max-width: 600px) {
+    width: 85%;
+    height: 50px;
+
+    input {
+      height: 50px;
+    }
   }
 `;
 
