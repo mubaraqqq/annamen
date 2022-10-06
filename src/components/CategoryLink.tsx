@@ -15,6 +15,10 @@ const StyledLink = styled(Link)`
   margin-bottom: 10px;
   border: 2px solid transparent;
 
+  @media (max-width: 600px) {
+    width: 45%;
+  }
+
   &:focus,
   &:active {
     border: 2px solid grey;

@@ -14,6 +14,11 @@ const LinkContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    width: 95%;
+  }
 `;
 
 const CategoryHeader = styled.h3`
