@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import flash from "../assets/green-light-copy@3x.png";
 import arrow from "../assets/path-copy-5@3x.png";
@@ -28,7 +28,7 @@ const Box = styled.div`
   div p {
     font-size: 16px;
     font-weight: 600;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
 `;
 
@@ -64,11 +64,15 @@ type Props = {
 };
 
 const JokeCategoryCard = ({ joke, number, id }: Props) => {
+  const { category } = useParams();
+
   return (
     <Box>
       <div>
         <img src={flash} alt="lightning icon" width="20px" height="20px" />
-        <p>Chuck Joke {number}</p>
+        <p>
+          {category} Chuck Joke #{number + 1}
+        </p>
       </div>
       <JokeText>{joke}</JokeText>
       <StyledLink to="">
