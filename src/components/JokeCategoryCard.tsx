@@ -35,8 +35,8 @@ const Box = styled.div`
 const JokeText = styled.p`
   margin-top: 10px;
   font-size: 14px;
-  overflow-y: scroll;
-  height: 80%;
+  overflow-y: auto;
+  height: 75%;
 `;
 
 const StyledLink = styled(Link)`

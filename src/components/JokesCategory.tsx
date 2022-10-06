@@ -16,7 +16,7 @@ const Box = styled.div`
 `;
 
 const JokesCategory = () => {
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(2);
 
   const jokes = useAppSelector((state) => state.jokes.jokes);
   const isLoading = useAppSelector((state) => state.jokes.isLoading);
@@ -24,6 +24,10 @@ const JokesCategory = () => {
   const { category } = useParams();
 
   const jokesCategory = filterJokesByCategory(jokes, category as IJokeCategory);
+
+  function increaseLimit() {
+    setLimit((limit) => (limit += 3));
+  }
 
   if (isLoading)
     return <div style={{ width: "89%", margin: "0 auto" }}>Loading...</div>;
@@ -35,10 +39,12 @@ const JokesCategory = () => {
       </div>
     );
 
+  let lengthLeft = jokesCategory.length - limit;
+
   return (
     <div>
       <Box>
-        {jokesCategory.map((joke, idx) => (
+        {jokesCategory.slice(0, limit).map((joke, idx) => (
           <JokeCategoryCard
             key={idx}
             number={idx}
@@ -48,7 +54,7 @@ const JokesCategory = () => {
         ))}
       </Box>
       <div style={{ textAlign: "center", padding: "30px 0" }}>
-        <LoadMoreButton />
+        <LoadMoreButton length={lengthLeft} click={increaseLimit} />
       </div>
     </div>
   );

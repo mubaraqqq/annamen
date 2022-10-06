@@ -8,6 +8,10 @@ const Button = styled.button`
   text-transform: uppercase;
   padding: 15px 30px;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   div {
     display: flex;
     align-items: center;
