@@ -50,6 +50,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   display: flex;
   align-items: center;
+  font-weight: 600;
 
   img {
     margin-left: 5px;
