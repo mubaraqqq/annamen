@@ -16,7 +16,7 @@ const Box = styled.div`
 `;
 
 const JokesCategory = () => {
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(3);
 
   const jokes = useAppSelector((state) => state.jokes.jokes);
   const isLoading = useAppSelector((state) => state.jokes.isLoading);
@@ -26,7 +26,7 @@ const JokesCategory = () => {
   const jokesCategory = filterJokesByCategory(jokes, category as IJokeCategory);
 
   function increaseLimit() {
-    setLimit((limit) => (limit += 1));
+    setLimit((limit) => (limit += 3));
   }
 
   if (isLoading)

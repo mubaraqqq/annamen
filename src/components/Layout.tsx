@@ -80,7 +80,7 @@ function Layout() {
           {foundCategory.name}
         </CategoryHeader>
       )}
-      <Outlet />
+      <Outlet key={category} />
 
       <Footer />
     </div>
